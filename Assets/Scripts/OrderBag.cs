@@ -67,36 +67,40 @@ public class OrderBag : MonoBehaviour
 
             foreach (GameObject required in requiredItem)
             {
+                Debug.LogWarning("TEST TEST TEST TEST");
+
                 if (required.GetComponent<FoodData>().FoodType == item.GetComponent<FoodData>().FoodType)
                 {
                     requiredItem.Remove(required); // remove matched item from required list
-                    break; // exit inner loopon
+                   
+                    if (requiredItem.Count == 1)
+                    {
+                        OrderCorrect();
+                        return;
+                    }
                 }
-
-                if(requiredItem.Count == 0)
+                else
                 {
-                    OrderCorrect();
-                    
-                    return;
+                    break; 
                 }
-
-
+                break; 
             }
-
-
         }
+
+        OrderIncorrect();
+
     }
 
 
     private void OrderCorrect()
     {
-        Debug.Log("Order correct!");
+        Debug.LogWarning("Order correct!");
         StartCoroutine(RemoveBag());
     }
 
     private void OrderIncorrect()
     {
-        Debug.Log("Order Incorrect!");
+        Debug.LogWarning("Order Incorrect!");
         StartCoroutine(RemoveBag());
     }
 
