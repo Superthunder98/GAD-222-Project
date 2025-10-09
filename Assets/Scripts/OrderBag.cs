@@ -12,6 +12,11 @@ public class OrderBag : MonoBehaviour
     [SerializeField] List<GameObject> requiredItem = new List<GameObject>();
 
     // TESTING
+    // TEMP ONLY
+    public GameObject goodText;
+    public GameObject badText;
+
+    // TESTING
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -49,45 +54,65 @@ public class OrderBag : MonoBehaviour
 
     public void Validate()
     {
-        if(packedItems.Count == 0)
+        if(packedItems.Count < requiredItem.Count)
         {
-            Debug.Log("BAG EMPTY");
+            Debug.Log("ITEM COUNT MISMATCH");
             OrderIncorrect();
             return;
         }
 
         foreach (GameObject item in packedItems)
         {
-            if (item == null) // check if there are no more items to check against
-            {
-                Debug.LogWarning("OUT OF ITEM");
-                OrderIncorrect();
-                return;
-            }
-
-            foreach (GameObject required in requiredItem)
+            foreach(GameObject required in requiredItem)
             {
                 Debug.LogWarning("TEST TEST TEST TEST");
-
                 if (required.GetComponent<FoodData>().FoodType == item.GetComponent<FoodData>().FoodType)
                 {
                     requiredItem.Remove(required); // remove matched item from required list
-                   
-                    if (requiredItem.Count == 1)
+
+                    if(requiredItem.Count == 0)
                     {
                         OrderCorrect();
+                        Debug.LogWarning("ALL ITEMS MATCHED");
                         return;
                     }
-                }
-                else
-                {
+
                     break; 
                 }
-                break; 
             }
+
+           
         }
 
-        OrderIncorrect();
+         OrderIncorrect();
+
+       
+        //foreach (GameObject item in packedItems)
+        //{
+
+        //    foreach (GameObject required in requiredItem)
+        //    {
+        //        Debug.LogWarning("TEST TEST TEST TEST");
+
+        //        if (required.GetComponent<FoodData>().FoodType == item.GetComponent<FoodData>().FoodType)
+        //        {
+        //            requiredItem.Remove(required); // remove matched item from required list
+                   
+        //            if (requiredItem.Count == 1)
+        //            {
+        //                OrderCorrect();
+        //                return;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            break; 
+        //        }
+        //        break; 
+        //    }
+        //}
+
+        //OrderIncorrect();
 
     }
 
@@ -95,12 +120,14 @@ public class OrderBag : MonoBehaviour
     private void OrderCorrect()
     {
         Debug.LogWarning("Order correct!");
+        goodText.SetActive(true);
         StartCoroutine(RemoveBag());
     }
 
     private void OrderIncorrect()
     {
         Debug.LogWarning("Order Incorrect!");
+        badText.SetActive(true);
         StartCoroutine(RemoveBag());
     }
 
