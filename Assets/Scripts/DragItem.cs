@@ -7,6 +7,15 @@ public class DragItem : MonoBehaviour
     [SerializeField] private bool isDragging = false;
     private float distance;
 
+    //private void OnMouseEnter()
+    //{
+    //    Debug.LogWarning("Mouse Entered");
+    //}
+
+    //private void OnMouseExit()
+    //{
+    //    Debug.LogWarning("Mouse Exited");
+    //}
 
     void OnMouseDown()
     {
@@ -28,4 +37,5 @@ public class DragItem : MonoBehaviour
             transform.position = rayPoint;
         }
     }
+
 }

@@ -936,6 +936,7 @@ GameObject:
   - component: {fileID: 726527115}
   - component: {fileID: 726527116}
   - component: {fileID: 726527117}
+  - component: {fileID: 726527118}
   m_Layer: 0
   m_Name: GAMEMANAGER
   m_TagString: Untagged
@@ -997,6 +998,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5262da14e371a94887930012086db96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &726527118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726527114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d954bdde21fd84ca0f4894bf81c1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
 --- !u!1 &892380701
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,6 +3273,18 @@ PrefabInstance:
       propertyPath: 'requiredItem.Array.data[5]'
       value: 
       objectReference: {fileID: 1000966686654209260, guid: 086d6bccf6689024a9b65c34561fd306, type: 3}
+    - target: {fileID: 6619330363018738063, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619330363018738063, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619330363018738063, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7037838284538022507, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_Name
       value: OrderBag
@@ -3273,7 +3299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7266175433924242659, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 7266175433924242659, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_LocalRotation.w
