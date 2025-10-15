@@ -3283,11 +3283,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6619330363018738063, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6619330363018738063, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7037838284538022507, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_Name
       value: OrderBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 7037838284538022507, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7266175433924242659, guid: 4949e6c557ad76c4db5dff845b504f6a, type: 3}
       propertyPath: m_LocalPosition.x
