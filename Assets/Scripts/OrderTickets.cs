@@ -9,7 +9,7 @@ public class OrderTickets : MonoBehaviour
     [SerializeField] int orderTimerSec = 0;
     [SerializeField] int orderTimerMin = 0;
 
-    [SerializeField] List<GameObject> currentOrder = new List<GameObject>();
+    public List<GameObject> currentOrder = new List<GameObject>();
 
     
 

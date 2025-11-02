@@ -11,6 +11,8 @@ public class OrderBag : MonoBehaviour
 
     [SerializeField] List<GameObject> requiredItem = new List<GameObject>();
 
+    [SerializeField] bool isTicketPlaced = false;
+
     // TESTING
     // TEMP ONLY
     public GameObject goodText;
@@ -28,6 +30,8 @@ public class OrderBag : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+      //  Debug.Log("collision at" + collision.gameObject.name);
+
         if (collision.gameObject.CompareTag("FoodItem"))
         {
             Debug.Log("Item packed: " + collision.gameObject.name);
@@ -36,15 +40,43 @@ public class OrderBag : MonoBehaviour
                 packedItems.Add(collision.gameObject);
             }
         }
+
+        if(collision.gameObject.CompareTag("Ticket"))
+        {
+            Debug.Log("Ticket:" + collision.gameObject.name);
+            
+
+            isTicketPlaced = true;
+            
+            foreach (GameObject item in collision.gameObject.GetComponent<OrderTickets>().currentOrder)
+            {
+                requiredItem.Add(item);
+                Debug.Log("Required item added: " + item.name);
+            }
+
+
+        }
+
+
     }
 
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Item removed: " + collision.gameObject.name);
+
+
         if (collision.gameObject.CompareTag("FoodItem"))
         {
+            Debug.Log("Item removed: " + collision.gameObject.name);
             packedItems.Remove(collision.gameObject);
+        }
+
+
+        if (collision.gameObject.CompareTag("Ticket"))
+        {
+            Debug.Log("Ticket removed: " + collision.gameObject.name);
+            requiredItem.Clear();
+            isTicketPlaced = false;
         }
     }
 
@@ -54,7 +86,15 @@ public class OrderBag : MonoBehaviour
 
     public void Validate()
     {
-        if(packedItems.Count < requiredItem.Count)
+
+        if (!isTicketPlaced)
+        {
+            Debug.Log("NO TICKET PRESENT");
+           
+            return;
+        }
+
+        if (packedItems.Count < requiredItem.Count)
         {
             Debug.Log("ITEM COUNT MISMATCH");
             OrderIncorrect();
