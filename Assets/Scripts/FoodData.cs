@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class FoodData : MonoBehaviour
 {
+    public GameObject dispalyIcon;
+
+
     public foodId FoodType = foodId.Null;
 
     public enum foodId 

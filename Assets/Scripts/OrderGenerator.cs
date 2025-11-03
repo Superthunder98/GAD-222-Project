@@ -14,6 +14,15 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] List<GameObject> productList = new List<GameObject>();
     [SerializeField] List<GameObject> currentOrder = new List<GameObject>();
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            GenerateOrder();
+        }
+    }
+
     void GenerateOrder()
     {
         currentOrder.Clear();
@@ -24,6 +33,10 @@ public class OrderGenerator : MonoBehaviour
             currentOrder.Add(productList[randomIndex]);
         }
         Debug.Log("New Order Generated");
+
+        gameObject.GetComponent<OrderTickets>().currentOrder = new List<GameObject>(currentOrder);
+
+
     }
 
 
