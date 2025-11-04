@@ -203,4 +203,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4ed99a58f81b64b91504d06f449099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dispalyIcon: {fileID: 1000966686654209260, guid: 5abe62fa411d74949b9cbf706346386a, type: 3}
   FoodType: 3

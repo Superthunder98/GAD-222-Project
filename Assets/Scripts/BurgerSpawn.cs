@@ -18,7 +18,7 @@ public class BurgerSpawn : MonoBehaviour
     [SerializeField] float startDelay = 10f;
     private float spawnTimer;
 
-    [SerializeField] List<GameObject> productionQueue = new List<GameObject>();
+    public List<GameObject> productionQueue = new List<GameObject>();
 
 
     private void Awake()
