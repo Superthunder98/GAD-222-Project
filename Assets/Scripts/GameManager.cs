@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] int correctOrders = 0;
     [SerializeField] int incorrectOrders = 0;
 
+    [SerializeField] int shiftMinsRemaining = 5;
+    [SerializeField] int shiftSecsRemaining = 0;
+
+    public bool isShiftActive = true;
 
 
     [Header("reference and values")]
@@ -29,17 +34,40 @@ public class GameManager : MonoBehaviour
     {
         // Start the ticket spawning process
         StartCoroutine(ticketTimer());
+        StartCoroutine(shiftimetr());
     }
 
     IEnumerator ticketTimer()
     {
-        while (true)
+        while (isShiftActive)
         {
             yield return new WaitForSeconds(Random.Range(minTicketSpawnTime, maxTicketSpawnTime));
             ticketManager.PlaceTicket();
         }
     }
 
+    IEnumerator shiftimetr()
+    {
+        while (isShiftActive)
+        {
+            shiftSecsRemaining--;
+
+            if (shiftSecsRemaining <= 0)
+            {
+                shiftMinsRemaining--;
+                shiftSecsRemaining = 59;
+            }
+
+            if (shiftMinsRemaining == 0 && shiftSecsRemaining == 0)
+            {
+                // End shift
+                Debug.Log("Shift over!");
+                isShiftActive = false;
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
     public void OrderCorrect()
     {
         Debug.LogWarning("Order correct!");
@@ -56,7 +84,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(turnOffText());
 
     }
-
 
     IEnumerator turnOffText()
     {

@@ -692,11 +692,7 @@ MonoBehaviour:
   orderTimerText: {fileID: 4914110304736782365}
   orderTimerSec: 60
   orderTimerMin: 2
-  currentOrder:
-  - {fileID: 1000966686654209260, guid: 086d6bccf6689024a9b65c34561fd306, type: 3}
-  - {fileID: 5659520264572415538, guid: 9c78e5b062b437a4796a45b3f71388f0, type: 3}
-  - {fileID: 5025908099309493813, guid: 76af6a794dece1f4cae9dfcc46434ed2, type: 3}
-  - {fileID: 5025908099309493813, guid: 76af6a794dece1f4cae9dfcc46434ed2, type: 3}
+  currentOrder: []
 --- !u!114 &7396381230855510488
 MonoBehaviour:
   m_ObjectHideFlags: 0

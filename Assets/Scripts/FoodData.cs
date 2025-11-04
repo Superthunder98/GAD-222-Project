@@ -13,5 +13,7 @@ public class FoodData : MonoBehaviour
         Testing_BL,
         Testing_BLU,
         Testing_Red,
+        Testing_GREEN,
+        Testing_MAGENTA,
     }
 }

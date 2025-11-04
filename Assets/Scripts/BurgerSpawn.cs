@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BurgerSpawn : MonoBehaviour
 {
-
+    [SerializeField] GameManager gameManager;
     // TESTING
     //[SerializeField] GameObject testBurgerPrefab;
-
 
 
     [SerializeField] float leftLimit = -5f;
@@ -20,10 +19,13 @@ public class BurgerSpawn : MonoBehaviour
 
     public List<GameObject> productionQueue = new List<GameObject>();
 
+    [SerializeField] float randomizerMinTime = 5f;
+    [SerializeField] float randomizerMaxTime = 15f;
 
     private void Awake()
     {
         StartCoroutine(MakeBurgur());
+        StartCoroutine(randomizer());
     }
 
 
@@ -47,11 +49,20 @@ public class BurgerSpawn : MonoBehaviour
         }
     }
 
+    IEnumerator randomizer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(randomizerMinTime, randomizerMaxTime));
+            productionQueue.Add(gameManager.productList[Random.Range(0, gameManager.productList.Count)]);
+        }
+    }
 
      void SpawnBurger(GameObject burgerPrefab)
     {
         float randomX = Random.Range(leftLimit, rightLimit);
-        Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y, this.transform.position.z);
+        float randomY = Random.Range(2.4f, 4f);
+        Vector3 spawnPosition = new Vector3(randomX, randomY, this.transform.position.z);
         Instantiate(burgerPrefab, spawnPosition, Quaternion.identity);
     }
 
