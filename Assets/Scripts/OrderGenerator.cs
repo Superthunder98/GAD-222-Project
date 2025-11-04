@@ -18,12 +18,17 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] List<Transform> ticketVisualSpots = new List<Transform>();
 
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            GenerateOrder();
-        }
+        gameManager = GameObject.Find("GAMEMANAGER").GetComponent<GameManager>();
+        burgerSpawnScript = gameManager.GetComponent<BurgerSpawn>();
+
+       
+
+
+
+
+        GenerateOrder();
     }
 
     void GenerateOrder()

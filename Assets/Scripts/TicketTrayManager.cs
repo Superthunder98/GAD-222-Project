@@ -4,15 +4,28 @@ using UnityEngine;
 public class TicketTrayManager : MonoBehaviour
 {
     [SerializeField] List<GameObject> ticketLocation = new List<GameObject>();
+    [SerializeField] GameObject ticketPrefab;
 
-    public void PlaceTicket(GameObject ticket)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            PlaceTicket();
+        }
+    }
+
+    public void PlaceTicket()
     {
         foreach (GameObject location in ticketLocation)
         {
-            if (gameObject.gameObject.GetComponent<TicketSpot>().isOccupied == false)
+            if (location.GetComponent<TicketSpot>().isOccupied == false)
             {
-                ticket.transform.position = location.transform.position;
-                gameObject.gameObject.GetComponent<TicketSpot>().isOccupied = true;
+
+                location.GetComponent<TicketSpot>().isOccupied = true;
+
+                Instantiate(ticketPrefab, location.transform);
+
+                
                 break;
             }
         }
@@ -20,7 +33,7 @@ public class TicketTrayManager : MonoBehaviour
         if (ticketLocation.TrueForAll(loc => loc.GetComponent<TicketSpot>().isOccupied))
         {
             Debug.LogError("All ticket spots are occupied.");
-            Destroy(ticket); // fail-safe to prevent game over from non completeable task.
+          
 
         }
     }

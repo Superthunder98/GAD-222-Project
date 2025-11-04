@@ -11,6 +11,7 @@ public class OrderBag : MonoBehaviour
 
     [SerializeField] List<GameObject> requiredItem = new List<GameObject>();
 
+    [SerializeField] GameObject ticket;
     [SerializeField] bool isTicketPlaced = false;
 
     // TESTING
@@ -47,6 +48,7 @@ public class OrderBag : MonoBehaviour
             
 
             isTicketPlaced = true;
+            ticket = collision.gameObject;
             
             foreach (GameObject item in collision.gameObject.GetComponent<OrderTickets>().currentOrder)
             {
@@ -76,6 +78,7 @@ public class OrderBag : MonoBehaviour
         {
             Debug.Log("Ticket removed: " + collision.gameObject.name);
             requiredItem.Clear();
+            ticket = null;
             isTicketPlaced = false;
         }
     }
@@ -191,6 +194,7 @@ public class OrderBag : MonoBehaviour
             {
                 gameManager.SpawnBag();
 
+                Destroy(ticket.gameObject);
                 Destroy(this.gameObject);
                 yield return null;
             }
