@@ -16,8 +16,7 @@ public class OrderBag : MonoBehaviour
 
     // TESTING
     // TEMP ONLY
-    public GameObject goodText;
-    public GameObject badText;
+   
 
     // TESTING
     private void Update()
@@ -108,7 +107,7 @@ public class OrderBag : MonoBehaviour
         {
             foreach(GameObject required in requiredItem)
             {
-                Debug.LogWarning("TEST TEST TEST TEST");
+                //Debug.LogWarning("TEST TEST TEST TEST");
                 if (required.GetComponent<FoodData>().FoodType == item.GetComponent<FoodData>().FoodType)
                 {
                     requiredItem.Remove(required); // remove matched item from required list
@@ -162,43 +161,33 @@ public class OrderBag : MonoBehaviour
 
     private void OrderCorrect()
     {
-        Debug.LogWarning("Order correct!");
-        goodText.SetActive(true);
-        StartCoroutine(RemoveBag());
+        gameManager.OrderCorrect();
+        RemoveBag();
     }
 
     private void OrderIncorrect()
     {
-        Debug.LogWarning("Order Incorrect!");
-        badText.SetActive(true);
-        StartCoroutine(RemoveBag());
+        gameManager.OrderIncorrect();
+        RemoveBag();
     }
 
- 
-    
-   
-
-
-    IEnumerator RemoveBag()
+    void RemoveBag()
     {
-        while (true)
-        { 
-            if (packedItems.Count > 0)
-            {
-                GameObject item = packedItems[0];
-                packedItems.RemoveAt(0);
-                Destroy(item);
-                yield return new WaitForSeconds(0.01f);
-            }
-            else
-            {
-                gameManager.SpawnBag();
+        Destroy(ticket.gameObject);
+        requiredItem.Clear();
+        ticket = null;
+        isTicketPlaced = false;
 
-                Destroy(ticket.gameObject);
-                Destroy(this.gameObject);
-                yield return null;
-            }
-        }
+        foreach (GameObject item in packedItems)
+        {
+
+           
+            Destroy(item.gameObject, 0.2f);
+
+        } 
+          
+        packedItems.Clear();
+
     }
 
 }
