@@ -2430,7 +2430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.58900005}
-  m_AnchoredPosition: {x: 1405, y: -122}
+  m_AnchoredPosition: {x: 1405, y: -70}
   m_SizeDelta: {x: 200, y: -46}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1733660987
@@ -2458,17 +2458,17 @@ MonoBehaviour:
     the game length function currently isn''t working so there
     is no end condition ATM.
 
-    
+
 
     feel free to quit at any time.
 
 
-    orders
-    and timers are randomized so some games may be more busy than others
+    orders and
+    timers are randomized so some games may be more busy than others
 
 
-    the
-    lack of a proper tutorial is part of the games design '
+    the lack
+    of a proper tutorial is part of the games design '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -29,7 +29,13 @@ public class GameManager : MonoBehaviour
     public GameObject badText;
 
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
     void Start()
     {
         // Start the ticket spawning process
