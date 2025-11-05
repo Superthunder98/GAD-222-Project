@@ -42,7 +42,7 @@ public class BurgerSpawn : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
-                int i = Random.Range(0, productionQueue.Count);
+                int i = Random.Range(0, productionQueue.Count/2);
                 SpawnBurger(productionQueue[i]);
                 productionQueue.RemoveAt(i);
             }
