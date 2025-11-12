@@ -41,10 +41,19 @@ public class BurgerSpawn : MonoBehaviour
             }
             else
             {
+                if (productionQueue.Count < 4)
+                {
+                    SpawnBurger(productionQueue[0]);
+                    productionQueue.RemoveAt(0);
+                }
+                else
+                { 
+                    int i = Random.Range(0, productionQueue.Count / 4);
+                    SpawnBurger(productionQueue[i]);
+                    productionQueue.RemoveAt(i);
+                }
+
                 yield return new WaitForSeconds(Random.Range(minSpawnInterval, maxSpawnInterval));
-                int i = Random.Range(0, productionQueue.Count/2);
-                SpawnBurger(productionQueue[i]);
-                productionQueue.RemoveAt(i);
             }
         }
     }

@@ -1290,9 +1290,9 @@ MonoBehaviour:
   gameManager: {fileID: 726527117}
   leftLimit: -8
   rightLimit: 8
-  minSpawnInterval: 0.5
-  maxSpawnInterval: 3
-  startDelay: 12
+  minSpawnInterval: 0.1
+  maxSpawnInterval: 2
+  startDelay: 15
   productionQueue: []
   randomizerMinTime: 10
   randomizerMaxTime: 15

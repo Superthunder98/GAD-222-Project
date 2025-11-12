@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 6735092571829476173}
   - component: {fileID: 6801149597991061259}
   m_Layer: 3
-  m_Name: Ticket
+  m_Name: TEST_TICK
   m_TagString: Ticket
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
