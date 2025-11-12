@@ -2,26 +2,19 @@ using UnityEngine;
 
 public class TicketSpot : MonoBehaviour
 {
-    public int isOccupied = 0;
+    
 
 
-
-    private void OnCollisionExit2D(Collision2D collision)
+    public bool CheckPositionAvailability()
     {
-        if (collision.gameObject.CompareTag("Ticket"))
+        if (transform.childCount == 0)
         {
-            isOccupied -= 1;
+            return true; // Spot is available
         }
-    }
-
-   private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.CompareTag("Ticket"))
+        else
         {
-            isOccupied += 1;
+            return false;// Spot is occupied
         }
-       
     }
 
 }

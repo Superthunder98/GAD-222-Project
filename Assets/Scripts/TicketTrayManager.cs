@@ -18,19 +18,16 @@ public class TicketTrayManager : MonoBehaviour
     {
         foreach (GameObject location in ticketLocation)
         {
-            if (location.GetComponent<TicketSpot>().isOccupied == 0)
+            if (location.GetComponent<TicketSpot>().CheckPositionAvailability() == true)
             {
-
-                //location.GetComponent<TicketSpot>().isOccupied += 1;
 
                 Instantiate(ticketPrefab, location.transform);
 
-                
                 break;
             }
         }
 
-        if (ticketLocation.TrueForAll(loc => loc.GetComponent<TicketSpot>().isOccupied != 0))
+        if (ticketLocation.TrueForAll(loc => loc.GetComponent<TicketSpot>().CheckPositionAvailability() == false))
         {
             Debug.LogWarning("All ticket spots are occupied.");
           

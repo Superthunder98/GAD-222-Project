@@ -4,8 +4,10 @@ using UnityEngine;
 public class DragItem : MonoBehaviour
 {
 
-    [SerializeField] private bool isDragging = false;
+    public bool isDragging = false;
+    public bool isTicketInPlace = false;
     private float distance;
+    
 
     //private void OnMouseEnter()
     //{
@@ -26,6 +28,10 @@ public class DragItem : MonoBehaviour
     void OnMouseUp()
     {
         isDragging = false;
+        if (!isTicketInPlace)
+        {
+            this.transform.localPosition = new Vector3(0, 0, 0);
+        }
     }
 
     void Update()

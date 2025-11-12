@@ -5,18 +5,18 @@ using UnityEngine;
 public class OrderBag : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-
+    [SerializeField] Transform ticketSpot;
 
     [SerializeField] List<GameObject> packedItems = new List<GameObject>();
 
     [SerializeField] List<GameObject> requiredItem = new List<GameObject>();
 
     [SerializeField] GameObject ticket;
-    [SerializeField] bool isTicketPlaced = false;
+    
 
     // TESTING
     // TEMP ONLY
-   
+
 
     // TESTING
     private void Update()
@@ -41,23 +41,25 @@ public class OrderBag : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Ticket"))
+        if(collision.gameObject.CompareTag("Ticket") && !ticket)
         {
             Debug.Log("Ticket:" + collision.gameObject.name);
             
 
-            isTicketPlaced = true;
             ticket = collision.gameObject;
             
+            collision.gameObject.GetComponent<DragItem>().isDragging = false;
+            collision.gameObject.GetComponent<DragItem>().isTicketInPlace = true;
+
+            collision.gameObject.transform.position = ticketSpot.position;
+
             foreach (GameObject item in collision.gameObject.GetComponent<OrderTickets>().currentOrder)
             {
                 requiredItem.Add(item);
                 Debug.Log("Required item added: " + item.name);
             }
 
-
         }
-
 
     }
 
@@ -65,31 +67,26 @@ public class OrderBag : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
 
-
         if (collision.gameObject.CompareTag("FoodItem"))
         {
             Debug.Log("Item removed: " + collision.gameObject.name);
             packedItems.Remove(collision.gameObject);
         }
 
-
         if (collision.gameObject.CompareTag("Ticket"))
         {
             Debug.Log("Ticket removed: " + collision.gameObject.name);
-            requiredItem.Clear();
+            
+            collision.gameObject.GetComponent<DragItem>().isTicketInPlace = false;
             ticket = null;
-            isTicketPlaced = false;
+            requiredItem.Clear();
         }
     }
-
-   
-
-
 
     public void Validate()
     {
 
-        if (!isTicketPlaced)
+        if (!ticket)
         {
             Debug.Log("NO TICKET PRESENT");
            
@@ -122,8 +119,6 @@ public class OrderBag : MonoBehaviour
                     break; 
                 }
             }
-
-           
         }
 
          OrderIncorrect();
@@ -176,7 +171,7 @@ public class OrderBag : MonoBehaviour
         Destroy(ticket.gameObject);
         requiredItem.Clear();
         ticket = null;
-        isTicketPlaced = false;
+       
 
         foreach (GameObject item in packedItems)
         {
