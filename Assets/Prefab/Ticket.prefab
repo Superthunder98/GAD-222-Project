@@ -706,6 +706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDragging: 0
+  isTicketInPlace: 0
+  isTicket: 1
 --- !u!61 &6735092571829476173
 BoxCollider2D:
   m_ObjectHideFlags: 0

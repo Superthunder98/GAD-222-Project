@@ -7,7 +7,9 @@ public class DragItem : MonoBehaviour
     public bool isDragging = false;
     public bool isTicketInPlace = false;
     private float distance;
-    
+
+    [SerializeField] bool isTicket = false; // To differentiate between tickets and food
+
 
     //private void OnMouseEnter()
     //{
@@ -21,16 +23,24 @@ public class DragItem : MonoBehaviour
 
     void OnMouseDown()
     {
-        distance = Vector3.Distance(transform.position, Camera.main.transform.position);
-        isDragging = true;
+        if (isTicketInPlace)
+        {
+            ResetPosition();
+            
+        }
+        else
+        { 
+             distance = Vector3.Distance(transform.position, Camera.main.transform.position);
+             isDragging = true;
+        }   
     }
 
     void OnMouseUp()
     {
         isDragging = false;
-        if (!isTicketInPlace)
+        if (!isTicketInPlace && isTicket)
         {
-            this.transform.localPosition = new Vector3(0, 0, 0);
+            ResetPosition();
         }
     }
 
@@ -44,4 +54,8 @@ public class DragItem : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        this.transform.localPosition = new Vector3(0, 0, 0);
+    }
 }

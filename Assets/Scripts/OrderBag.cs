@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OrderBag : MonoBehaviour
 {
+    // THIS CODE IS SHIT I MADE THIS GAME IN 4HRS OKAY SO BACK OFF!!!!!
     [SerializeField] GameManager gameManager;
     [SerializeField] Transform ticketSpot;
 
@@ -41,25 +42,57 @@ public class OrderBag : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.CompareTag("Ticket") && !ticket)
+        if(collision.gameObject.CompareTag("Ticket"))
         {
-            Debug.Log("Ticket:" + collision.gameObject.name);
-            
-
-            ticket = collision.gameObject;
-            
-            collision.gameObject.GetComponent<DragItem>().isDragging = false;
-            collision.gameObject.GetComponent<DragItem>().isTicketInPlace = true;
-
-            collision.gameObject.transform.position = ticketSpot.position;
-
-            foreach (GameObject item in collision.gameObject.GetComponent<OrderTickets>().currentOrder)
+            if( !ticket )
             {
+               Debug.Log("Ticket:" + collision.gameObject.name);
+            
+
+                 ticket = collision.gameObject;
+            
+                 collision.gameObject.GetComponent<DragItem>().isDragging = false;
+                  collision.gameObject.GetComponent<DragItem>().isTicketInPlace = true;
+
+                  collision.gameObject.transform.position = ticketSpot.position;
+
+                 foreach (GameObject item in collision.gameObject.GetComponent<OrderTickets>().currentOrder)
+                 {
                 requiredItem.Add(item);
                 Debug.Log("Required item added: " + item.name);
+                 }
+            }
+            else
+            {
+                // attempt one // remove collision object
+                //didtn work
+                // restore
+                // attempt 2 // set a tepery gameobject to hold the ticket so rest the ticket refentce to original ticket
+                // nope restore
+                // attempt 3 // reset position of the ticket being added
+                // ha ha ha .... no. restore
+                // atempt 4 // duel ticket game object refence 
+                //AHAHHHHHHHHHHHHH FUCK YOU. restore
+                // attempt 5. just goint to reset both tickers so atleast it cant softlock
+                // new day, new me, new attept to fix this
+                // I want the past six hours of my life back // restore to 5
+               
+
+                Debug.Log("A ticket is already in place. Cannot add another ticket.");
+                 
+
+                ticket.gameObject.GetComponent<DragItem>().ResetPosition();
+                collision.gameObject.GetComponent<DragItem>().ResetPosition();
+
+
+                
+
             }
 
+
+
         }
+
 
     }
 
