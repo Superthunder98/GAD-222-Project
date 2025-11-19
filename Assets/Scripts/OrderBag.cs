@@ -13,7 +13,8 @@ public class OrderBag : MonoBehaviour
     [SerializeField] List<GameObject> requiredItem = new List<GameObject>();
 
     [SerializeField] GameObject ticket;
-    
+
+    [SerializeField] KeyCode valadateOrderShortcut;
 
     // TESTING
     // TEMP ONLY
@@ -22,7 +23,7 @@ public class OrderBag : MonoBehaviour
     // TESTING
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(valadateOrderShortcut))
         {
             Debug.Log("Validating order...");
             Validate();
@@ -76,6 +77,8 @@ public class OrderBag : MonoBehaviour
                 // attempt 5. just goint to reset both tickers so atleast it cant softlock
                 // new day, new me, new attept to fix this
                 // I want the past six hours of my life back // restore to 5
+                // attempt 6 retrying attempt 2
+                // restore to 5 // IM ABANDONING THIS FOR TIME SAKE
                
 
                 Debug.Log("A ticket is already in place. Cannot add another ticket.");

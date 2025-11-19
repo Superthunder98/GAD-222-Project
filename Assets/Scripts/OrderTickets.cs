@@ -7,7 +7,7 @@ public class OrderTickets : MonoBehaviour
     [SerializeField] TextMeshProUGUI orderTimerText;
     [SerializeField] GameManager gameManager;
 
-    [SerializeField] int orderTimerSec = 60;
+    [SerializeField] int orderTimerSec = 31;
     [SerializeField] int orderTimerMin = 2;
 
     [SerializeField] bool timerAlarm = false; // flag value
@@ -20,26 +20,23 @@ public class OrderTickets : MonoBehaviour
 
     void Awake()
    {
+        gameManager = GameObject.Find("GAMEMANAGER").GetComponent<GameManager>();
         InvokeRepeating("UpdateTimer", 1f, 1f);
    }
 
     private void UpdateTimer()
     {
-        while (!ticketTimedOut)
-        {
             
-            
-
-            orderTimerSec --;
-
             if (ticketTimedOut)
             {
                 return;
             }
 
+            orderTimerSec --;
+
             if (orderTimerSec <= 0)
             {
-                orderTimerMin--;
+                orderTimerMin --;
                 orderTimerSec = 59;
             }
 
@@ -75,7 +72,7 @@ public class OrderTickets : MonoBehaviour
             }
 
             
-        }
+        
         
     }
     
