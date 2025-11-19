@@ -65,20 +65,7 @@ public class OrderBag : MonoBehaviour
             }
             else
             {
-                // attempt one // remove collision object
-                //didtn work
-                // restore
-                // attempt 2 // set a tepery gameobject to hold the ticket so rest the ticket refentce to original ticket
-                // nope restore
-                // attempt 3 // reset position of the ticket being added
-                // ha ha ha .... no. restore
-                // atempt 4 // duel ticket game object refence 
-                //AHAHHHHHHHHHHHHH FUCK YOU. restore
-                // attempt 5. just goint to reset both tickers so atleast it cant softlock
-                // new day, new me, new attept to fix this
-                // I want the past six hours of my life back // restore to 5
-                // attempt 6 retrying attempt 2
-                // restore to 5 // IM ABANDONING THIS FOR TIME SAKE
+                
                
 
                 Debug.Log("A ticket is already in place. Cannot add another ticket.");

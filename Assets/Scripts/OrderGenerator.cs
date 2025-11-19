@@ -23,11 +23,6 @@ public class OrderGenerator : MonoBehaviour
         gameManager = GameObject.Find("GAMEMANAGER").GetComponent<GameManager>();
         burgerSpawnScript = gameManager.GetComponent<BurgerSpawn>();
 
-       
-
-
-
-
         GenerateOrder();
     }
 

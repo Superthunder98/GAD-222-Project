@@ -8,7 +8,7 @@ public class TicketTrayManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             PlaceTicket();
         }
@@ -35,4 +35,18 @@ public class TicketTrayManager : MonoBehaviour
         }
     }
     
+    public bool CheckAllTicketsAreGone()
+    {
+        if (ticketLocation.TrueForAll(loc => loc.GetComponent<TicketSpot>().CheckPositionAvailability() == true))
+        {
+            return true;
+        }
+        else
+        { 
+            return false;
+        }
+    }
+
+
+
 }

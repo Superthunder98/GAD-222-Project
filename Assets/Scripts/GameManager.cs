@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class GameManager : MonoBehaviour
     public int correctOrders = 0;
     public int incorrectOrders = 0; // use as a mistake counter, im not renaming this for sake of time management 
 
-    [SerializeField] int shiftMinsRemaining = 5;
-    [SerializeField] int shiftSecsRemaining = 0;
+    [SerializeField] int shiftMinsRemaining = 10;
+    [SerializeField] int shiftSecsRemaining = 02;
 
     public bool isShiftActive = true;
 
@@ -54,25 +55,47 @@ public class GameManager : MonoBehaviour
 
     IEnumerator shiftimetr()
     {
-        while (isShiftActive)
+        while (true)
         {
-            shiftSecsRemaining--;
-
-            if (shiftSecsRemaining <= 0)
+            if (isShiftActive)
             {
-                shiftMinsRemaining--;
-                shiftSecsRemaining = 59;
-            }
+                shiftSecsRemaining--;
 
-            if (shiftMinsRemaining == 0 && shiftSecsRemaining == 0)
+                if (shiftSecsRemaining <= 0)
+                {
+                    shiftMinsRemaining--;
+                    shiftSecsRemaining = 59;
+                }
+
+                if (shiftMinsRemaining < 0)
+                {
+                    // End shift
+                    Debug.Log("Shift over!");
+                    isShiftActive = false;
+                }
+
+
+            }
+            else
             {
-                // End shift
-                Debug.Log("Shift over!");
-                isShiftActive = false;
-            }
 
+                if (ticketManager.CheckAllTicketsAreGone())
+                {
+                    SceneManager.LoadScene("EndGame");
+                    Debug.Log("Tickets cleared, game over!");
+                }
+                else
+                {
+                    Debug.Log("Waiting for tickets to clear...");
+
+                }
+                
+            }
+            
             yield return new WaitForSeconds(1f);
         }
+    
+        
     }
     public void OrderCorrect()
     {

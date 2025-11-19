@@ -1486,8 +1486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctOrders: 0
   incorrectOrders: 0
-  shiftMinsRemaining: 5
-  shiftSecsRemaining: 0
+  shiftMinsRemaining: 1
+  shiftSecsRemaining: 10
   isShiftActive: 1
   ticketManager: {fileID: 1961886226}
   productList:
@@ -1497,7 +1497,7 @@ MonoBehaviour:
   - {fileID: 1000966686654209260, guid: 086d6bccf6689024a9b65c34561fd306, type: 3}
   - {fileID: 5659520264572415538, guid: 2e3b76a1e7de8ba4bad6efe0a0e15974, type: 3}
   minTicketSpawnTime: 1
-  maxTicketSpawnTime: 10
+  maxTicketSpawnTime: 8
   goodText: {fileID: 1774497883}
   badText: {fileID: 1527866987}
 --- !u!1 &804125295

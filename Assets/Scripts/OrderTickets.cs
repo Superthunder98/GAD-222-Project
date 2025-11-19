@@ -19,10 +19,10 @@ public class OrderTickets : MonoBehaviour
 
 
     void Awake()
-   {
+    {
         gameManager = GameObject.Find("GAMEMANAGER").GetComponent<GameManager>();
         InvokeRepeating("UpdateTimer", 1f, 1f);
-   }
+    }
 
     private void UpdateTimer()
     {
