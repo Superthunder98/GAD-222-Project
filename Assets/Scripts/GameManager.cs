@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("score and game state")]
 
-    [SerializeField] int correctOrders = 0;
-    [SerializeField] int incorrectOrders = 0;
+    public int correctOrders = 0;
+    public int incorrectOrders = 0; // use as a mistake counter, im not renaming this for sake of time management 
 
     [SerializeField] int shiftMinsRemaining = 5;
     [SerializeField] int shiftSecsRemaining = 0;
