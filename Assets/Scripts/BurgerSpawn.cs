@@ -28,11 +28,19 @@ public class BurgerSpawn : MonoBehaviour
         StartCoroutine(randomizer());
     }
 
+    public void TurnOffBurger()
+    {
+        productionQueue.Clear();
+        StopAllCoroutines();
+        enabled = false;
+    }
+
 
     IEnumerator MakeBurgur()
     {
         while (true) // Link to game manager game state
         {
+
 
             if (productionQueue.Count == 0)
             {
@@ -62,8 +70,10 @@ public class BurgerSpawn : MonoBehaviour
     {
         while (true)
         {
+            
             yield return new WaitForSeconds(Random.Range(randomizerMinTime, randomizerMaxTime));
             productionQueue.Add(gameManager.productList[Random.Range(0, gameManager.productList.Count)]);
+            
         }
     }
 

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     [Header("reference and values")]
     [SerializeField] TicketTrayManager ticketManager;
+    [SerializeField] BurgerSpawn burgerSpawnScript;
 
     public List<GameObject> productList = new List<GameObject>();
 
@@ -36,9 +37,23 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("EndGame");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            isShiftActive = false;
+        }
     }
-    void Start()
+
+    
+
+    void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         // Start the ticket spawning process
         StartCoroutine(ticketTimer());
         StartCoroutine(shiftimetr());
@@ -46,10 +61,21 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ticketTimer()
     {
-        while (isShiftActive)
+        while (true)
         {
+            if(isShiftActive)
+            {
+               ticketManager.PlaceTicket();
+            }
+            else
+            {
+                  Debug.LogWarning("Shift is over, no more tickets will be spawned.");
+            }
+
+            
+            
+
             yield return new WaitForSeconds(Random.Range(minTicketSpawnTime, maxTicketSpawnTime));
-            ticketManager.PlaceTicket();
         }
     }
 
@@ -73,14 +99,13 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Shift over!");
                     isShiftActive = false;
                 }
-
-
             }
             else
             {
 
                 if (ticketManager.CheckAllTicketsAreGone())
                 {
+                    burgerSpawnScript.TurnOffBurger();
                     SceneManager.LoadScene("EndGame");
                     Debug.Log("Tickets cleared, game over!");
                 }
@@ -120,4 +145,11 @@ public class GameManager : MonoBehaviour
         goodText.SetActive(false);
         badText.SetActive(false);
     }
+
+    public void DestroyManager()
+    {
+        StopAllCoroutines(); 
+        Destroy(this.gameObject);
+    }
+
 }

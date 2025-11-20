@@ -8,7 +8,6 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] BurgerSpawn burgerSpawnScript;
     [SerializeField] GameManager gameManager;
 
-    
 
     public int maxItems = 8;
     public int minItems = 1;

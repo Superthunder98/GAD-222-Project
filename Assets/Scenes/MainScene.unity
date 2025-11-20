@@ -1486,10 +1486,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctOrders: 0
   incorrectOrders: 0
-  shiftMinsRemaining: 1
-  shiftSecsRemaining: 10
+  shiftMinsRemaining: 8
+  shiftSecsRemaining: 2
   isShiftActive: 1
   ticketManager: {fileID: 1961886226}
+  burgerSpawnScript: {fileID: 726527116}
   productList:
   - {fileID: 5025908099309493813, guid: 76af6a794dece1f4cae9dfcc46434ed2, type: 3}
   - {fileID: 5659520264572415538, guid: c7c9a09b54fe5184ab1dc30a8b94f37a, type: 3}
