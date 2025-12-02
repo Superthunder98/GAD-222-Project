@@ -38,15 +38,15 @@ public class GameManager : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene("EndGame");
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    SceneManager.LoadScene("EndGame");
+        //}
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            isShiftActive = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    isShiftActive = false;
+        //}
     }
 
     
