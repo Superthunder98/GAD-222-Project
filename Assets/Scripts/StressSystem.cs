@@ -53,7 +53,7 @@ public class StressSystem : MonoBehaviour
         {
             stressLevel = (incorrectOrders - corretOrders) * stepIncreaseValue;
 
-        postProcessVolume.weight = Mathf.Clamp((incorrectOrders - corretOrders) * stepIncreaseValue, 0f, 1f);
+            postProcessVolume.weight = Mathf.Clamp((incorrectOrders - corretOrders) * stepIncreaseValue, 0f, 1f);
         }
 
     
