@@ -980,9 +980,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "INFO:\nESC to quit\n1. drag items into packing area to match order ticket\n(dark
-    green capsule is trigger area)\n2. drag ticket into packing area \n3. press button
-    to send order\n\n(orders being accepted \nwith extra items is \nintentional)"
+  m_text: "INFO:\nESC to quit\n1. drag items into packing area to match order ticket\n(brown
+    box is trigger area)\n2. drag ticket into packing area \n3. press button to send
+    order\n\n(orders being accepted \nwith extra items is \nintentional)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
